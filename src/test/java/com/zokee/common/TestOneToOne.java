@@ -1,7 +1,7 @@
 /*
  * Power by www.xiaoi.com
  */
-package com.eastrobot.common;
+package com.zokee.common;
 
 import java.util.List;
 
@@ -94,16 +94,4 @@ public class TestOneToOne {
 //		session.createQuery("").setMaxResults(1).setFirstResult(1);
 	}
 	
-	public static void main(String[] args) {
-		ApplicationContext ac = new ClassPathXmlApplicationContext("app.xml");
-		UserService userService = (UserService) ac.getBean("userService");
-		List<User> list = userService.findAllUser();
-		System.out.println(list.size());
-		
-		User user = new User();
-		user.setUsername("main");
-		user.setPassword("main");
-		
-		userService.saveUser(user);
-	}
 }

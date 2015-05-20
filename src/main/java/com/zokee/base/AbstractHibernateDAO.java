@@ -45,9 +45,7 @@ public abstract class AbstractHibernateDAO extends HibernateDaoSupport implement
 		getHibernateTemplate().delete(entity);
 	}
 
-	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
 	public void saveOrUpdate(Object entity) throws DAORuntimeException {
-		System.out.println("最终执行这里");
 		getHibernateTemplate().saveOrUpdate(entity);
 	}
 

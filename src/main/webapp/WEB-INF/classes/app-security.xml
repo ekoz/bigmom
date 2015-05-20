@@ -10,7 +10,7 @@
           http://www.springframework.org/schema/context
           http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 
-	<bean id="md5Encoder" class="com.eastrobot.security.MD5Encoder"></bean>
+	<bean id="md5Encoder" class="com.zokee.security.MD5Encoder"></bean>
 
 	<security:http auto-config='true'>
 		<security:intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />

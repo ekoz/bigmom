@@ -15,7 +15,7 @@
 	<mvc:annotation-driven/>
 	
 	<!-- 设置使用注解的类所在的jar包 -->
-    <context:component-scan base-package="com.eastrobot"/>
+    <context:component-scan base-package="com.zokee"/>
 	
 	<!-- 静态资源访问 -->
 	<!-- 由于web.xml中配置spring只拦截.htm的路径，所以无需配置静态资源访问

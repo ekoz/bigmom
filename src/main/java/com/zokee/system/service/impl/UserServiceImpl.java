@@ -53,7 +53,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void saveUser(User user) {
-		System.out.println("执行这里...");
 		userDAO.saveUser(user);
 	}
 

@@ -1,7 +1,7 @@
 /*
  * Power by www.xiaoi.com
  */
-package com.eastrobot.common;
+package com.zokee.common;
 
 import org.junit.Test;
 

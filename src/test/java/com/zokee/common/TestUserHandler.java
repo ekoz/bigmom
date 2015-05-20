@@ -1,7 +1,7 @@
 /*
  * Power by www.xiaoi.com
  */
-package com.eastrobot.common;
+package com.zokee.common;
 
 import java.util.List;
 
@@ -66,7 +66,7 @@ public class TestUserHandler {
 	
 	@Test
 	public void testDeleteUser(){
-		User user = userService.findUserByUsername("admin");
+		User user = userService.findUserByUsername("1");
 		userService.deleteUser(user);
 	}
 }
