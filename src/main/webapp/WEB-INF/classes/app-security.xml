@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-3.2.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+	<bean id="md5Encoder" class="com.eastrobot.security.MD5Encoder"></bean>
+
+	<security:http auto-config='true'>
+		<security:intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/user/regist.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/user/test.do*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/**" access="ROLE_USER"/>
+		<!-- 配置登录页面 -->
+		<!-- login-page:默认指定的登录页面. 
+			authentication-failure-url:出错后跳转页面. 
+			default-target-url:成功登陆后跳转页面.
+			login-processing-url:发送的登录请求 -->
+		<security:form-login 
+			default-target-url="/login.do"
+			always-use-default-target="true"
+			login-page="/login.jsp" 
+			authentication-failure-url="/login.jsp?loginfailed"
+			login-processing-url="/spring_security_login" />
+		<security:logout delete-cookies="JSESSIONID" logout-success-url="/login.jsp" logout-url="/spring_security_logout" />
+		<!-- 控制session 的并发数量 -->
+		<security:session-management session-fixation-protection="migrateSession">
+			<security:concurrency-control max-sessions="1" expired-url="/login.jsp" />
+		</security:session-management>
+	</security:http>
+
+	<!-- 配置认证管理器 -->
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider>
+			<security:jdbc-user-service 
+				data-source-ref="dataSource" 
+				users-by-username-query="select username, password, 'true' from sys_user where username=?"
+				authorities-by-username-query="select username, 'ROLE_USER' from sys_user where username=?"
+				group-authorities-by-username-query=""
+			/>
+			<security:password-encoder ref="md5Encoder">
+				<security:salt-source user-property="username"/>
+			</security:password-encoder>
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>
