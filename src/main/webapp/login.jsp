@@ -8,18 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<base href="<%=basePath%>">
-
-		<title>Zokee</title>
-		<meta http-equiv="pragma" content="no-cache">
-		<meta http-equiv="cache-control" content="no-cache">
-		<meta http-equiv="expires" content="0">
-
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/themes/buttons.css">
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/bootstrap/css/bootstrap.css">
-		<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath }/resources/jquery.min.js"></script>
-		<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath }/resources/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath }/resources/layer/layer.js"></script>
+		<jsp:include page="/resources/head.jsp" flush="true" />
 		<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath }/resources/jquery.md5.js"></script>
 		<script type="text/javascript">eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('8 4(){2 5=3[0];2 6=3[1];7 $.4(6+\'{\'+5+\'}\')}',9,9,'||var|arguments|md5|_1|_0|return|function'.split('|'),0,{}));</script>
 		
@@ -73,6 +62,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		<script type="text/javascript">
 			$(function(){
+				if (SystemKeys.userid.length==32){
+					location.href = SystemKeys.contextPath + "/login.do";
+				}
 				//登录
 				$('#btnLogin').click(function(){
 					var _username = $("input[name='j_username']").val();
@@ -170,7 +162,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<body>
 		<div class="container">
+			<h1>夏洛特·玲玲 <small>BigMom</small></h1>
 			<form class="form-signin" action="${pageContext.request.contextPath }/spring_security_login" method="post">
+				<c:if test="${param.loginfailed==''}"><h5 style="color:#FF0000;">用户名或密码错误</h5></c:if>
 				<label for="inputEmail" class="sr-only">
 					用户名
 				</label>

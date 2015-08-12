@@ -14,7 +14,7 @@ import com.zokee.base.AbstractHibernateDAO;
  * @date May 13, 2015 12:16:43 PM
  * @version 1.0
  */
-public class BaseDAOImpl extends AbstractHibernateDAO{
+public class BaseDAOImpl<T> extends AbstractHibernateDAO<T>{
 	
 //	@Resource
 //	public void setSuperSessionFactory(SessionFactory sessionFactory){

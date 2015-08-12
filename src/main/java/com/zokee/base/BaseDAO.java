@@ -13,25 +13,25 @@ import org.springframework.orm.hibernate3.HibernateCallback;
  * @date May 14, 2015 10:25:42 AM
  * @version 1.0
  */
-public interface BaseDAO {
+public interface BaseDAO<T> {
 
-	public <T> List<T> find(String queryString) throws DAORuntimeException;
+	public List<T> find(String queryString) throws DAORuntimeException;
 	
-	public <T> List<T> find(String queryString, Object...objects) throws DAORuntimeException;
+	public List<T> find(String queryString, Object...objects) throws DAORuntimeException;
 	
-	public <T> List<T> findByNamedParam(String queryString, String paramName, Object value) throws DAORuntimeException;
+	public List<T> findByNamedParam(String queryString, String paramName, Object value) throws DAORuntimeException;
 	
-	public <T> List<T> findByNamedParam(String queryString, String[] paramNames, Object[] values) throws DAORuntimeException;
+	public List<T> findByNamedParam(String queryString, String[] paramNames, Object[] values) throws DAORuntimeException;
 	
-	public void save(Object entity) throws DAORuntimeException;
+	public void save(T entity) throws DAORuntimeException;
 	
-	public void update(Object entity) throws DAORuntimeException;
+	public void update(T entity) throws DAORuntimeException;
 	
-	public void delete(Object entity) throws DAORuntimeException;
+	public void delete(T entity) throws DAORuntimeException;
 	
-	public void saveOrUpdate(Object entity) throws DAORuntimeException;
+	public void saveOrUpdate(T entity) throws DAORuntimeException;
 	
-	public <T> T findById(Class<T> entityClass, String primarykey) throws DAORuntimeException;
+	public T findById(Class<T> entityClass, String primarykey) throws DAORuntimeException;
 	
-	public <T> T execute(HibernateCallback<T> action) throws DAORuntimeException;
+	public T execute(HibernateCallback<T> action) throws DAORuntimeException;
 }

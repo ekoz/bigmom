@@ -31,13 +31,13 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO{
 
 	@Override
 	public User findUser(String id) {
-		return findById(User.class, id);
+		return (User) findById(User.class, id);
 	}
 
 	@Override
 	public User findUserByUsername(String username) {
 		List<User> list = find("from User where username=?", new String[]{username});
-		if (list!=null && list.size()>0) return list.get(0);
+		if (list.size()>0) return list.get(0);
 		return null;
 	}
 

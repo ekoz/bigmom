@@ -15,45 +15,45 @@ import org.springframework.transaction.annotation.Transactional;
  * @date May 15, 2015 1:26:10 PM
  * @version 1.0
  */
-public abstract class AbstractHibernateDAO extends HibernateDaoSupport implements BaseDAO{
+public abstract class AbstractHibernateDAO<T> extends HibernateDaoSupport implements BaseDAO<T>{
 
-	public <T> List<T> find(String queryString) {
-		return (List<T>) getHibernateTemplate().find(queryString, null);
+	public List<T> find(String queryString) {
+		return (List<T>)getHibernateTemplate().find(queryString, null);
 	}
 
-	public <T> List<T> find(String queryString, Object... objects) {
+	public List<T> find(String queryString, Object... objects) {
 		return (List<T>) getHibernateTemplate().find(queryString, objects);
 	}
 	
-	public <T> List<T> findByNamedParam(String queryString, String paramName, Object value) {
+	public List<T> findByNamedParam(String queryString, String paramName, Object value) {
 		return (List<T>) getHibernateTemplate().findByNamedParam(queryString, paramName, value);
 	}
 	
-	public <T> List<T> findByNamedParam(String queryString, String[] paramNames, Object[] values) {
+	public List<T> findByNamedParam(String queryString, String[] paramNames, Object[] values) {
 		return (List<T>) getHibernateTemplate().findByNamedParam(queryString, paramNames, values);
 	}
 
-	public void save(Object entity) throws DAORuntimeException {
+	public void save(T entity) throws DAORuntimeException {
 		getHibernateTemplate().save(entity);
 	}
 
-	public void update(Object entity) throws DAORuntimeException {
+	public void update(T entity) throws DAORuntimeException {
 		getHibernateTemplate().update(entity);
 	}
 
-	public void delete(Object entity) throws DAORuntimeException {
+	public void delete(T entity) throws DAORuntimeException {
 		getHibernateTemplate().delete(entity);
 	}
 
-	public void saveOrUpdate(Object entity) throws DAORuntimeException {
+	public void saveOrUpdate(T entity) throws DAORuntimeException {
 		getHibernateTemplate().saveOrUpdate(entity);
 	}
 
-	public <T> T findById(Class<T> entityClass, String primarykey) throws DAORuntimeException {
+	public T findById(Class<T> entityClass, String primarykey) throws DAORuntimeException {
 		return getHibernateTemplate().get(entityClass, primarykey);
 	}
 	
-	public <T> T execute(HibernateCallback<T> action){
+	public T execute(HibernateCallback<T> action){
 		return getHibernateTemplate().execute(action);
 	}
 }

@@ -3,13 +3,8 @@
  */
 package com.zokee.common;
 
-import java.util.List;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.zokee.system.entity.User;
-import com.zokee.system.service.UserService;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author <a href="mailto:eko.z@outlook.com">eko.zhan</a>
@@ -29,5 +24,13 @@ public class TestMain {
 //		user.setPassword("main");
 //		
 //		userService.saveUser(user);
+		
+		Map<String, String> map = new HashMap<String, String>(){
+			{
+				put("1", "1");
+			}
+		};
+		
+		System.out.println(map.get("1"));
 	}
 }
