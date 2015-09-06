@@ -7,3 +7,5 @@ mysql
 
 jquery version: 1.8.3
 bootstrap version: 3.2.0
+
+simple-spring-memcached 3.2.1

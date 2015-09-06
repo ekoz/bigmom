@@ -28,7 +28,7 @@ import com.zokee.util.MD5Util;
  * @date May 20, 2015 3:07:53 PM
  * @version 1.0
  */
-@Service
+//@Service
 public class SetupListener implements ApplicationListener<ContextRefreshedEvent> {
 	
 	private final Log log = LogFactory.getLog(SetupListener.class);

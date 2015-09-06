@@ -8,6 +8,9 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -17,29 +20,13 @@ import net.sf.json.JSONObject;
  * @version 1.0
  */
 public class BaseController {
-
-	/**
-	 * 输出json
-	 * @param response
-	 * @param json
-	 */
-	public void writeJson(HttpServletResponse response, JSONObject json){
-		response.setContentType("text/json");
-		response.setCharacterEncoding("utf-8");
-		try {
-			PrintWriter out = response.getWriter();
-			out.print(json.toString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	/**
 	 * 输出json
 	 * @param response
 	 * @param json
 	 */
-	public void writeJson(HttpServletResponse response, JSONArray json){
+	public void writeJson(HttpServletResponse response, Object json){
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("utf-8");
 		try {

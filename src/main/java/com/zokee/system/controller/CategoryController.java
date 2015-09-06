@@ -13,6 +13,8 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,6 +31,9 @@ import com.zokee.system.service.CategoryService;
 @RequestMapping("/cate")
 public class CategoryController extends BaseController {
 
+	private Log log = LogFactory.getLog(this.getClass());
+	
+
 	@Resource
 	CategoryService categoryService;
 	
@@ -39,10 +44,11 @@ public class CategoryController extends BaseController {
 		String lv = request.getParameter("lv");
 		String otherParam = request.getParameter("otherParam");
 		
-		System.out.println(id);
-		System.out.println(n);
-		System.out.println(lv);
-		System.out.println(otherParam);
+		log.debug(id);
+		log.debug(n);
+		log.debug(lv);
+		log.debug(otherParam);
+		
 		
 		List<Category> list = null;
 		

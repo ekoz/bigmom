@@ -20,6 +20,8 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.google.code.ssm.api.CacheKeyMethod;
+
 /**
  * @author <a href="mailto:eko.z@outlook.com">eko.zhan</a>
  * @date May 15, 2015 8:29:44 PM
@@ -38,6 +40,7 @@ public class User implements Serializable{
 	@JoinColumn(name="userinfoid")
 	private UserInfo userinfo;
 	
+	@CacheKeyMethod
 	public String getId() {
 		return id;
 	}

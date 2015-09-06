@@ -76,5 +76,7 @@
 		<aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice" />
 	</aop:config>
 
+	<import resource="app-memcached.xml" />
+	
 	<import resource="app-security.xml"/>
 </beans>
