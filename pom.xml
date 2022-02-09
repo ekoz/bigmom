@@ -27,7 +27,7 @@
 	</build>
 	<properties>
 		<spring.version>5.3.14</spring.version>
-		<hibernate.version>3.6.10.Final</hibernate.version>
+		<hibernate.version>5.4.24.Final</hibernate.version>
 	</properties>
 	<dependencies>
 		<dependency>
